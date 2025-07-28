@@ -1,0 +1,10 @@
+version: '3'
+
+tasks:
+  generate:
+    aliases:
+      - gen
+    desc: "Get proto code"
+    cmds:
+      - protoc -I src --plugin=protoc-gen-ts=node_modules/.bin/protoc-gen-ts --ts_out=dist/ts src/*/*.proto
+

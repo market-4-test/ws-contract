@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package ws;
+
+import "google/protobuf/any.proto";
+import "google/protobuf/empty.proto";
+
+service WebSocket {
+  rpc GetSubscribesByUser(GetSubscribesByUserParams) returns (GetSubscribesByUserResponse);
+  rpc SubscribeUserToTopics(ToggleSubscribeParams) returns (google.protobuf.Empty);
+  rpc UnsubscribeUserFromTopics(ToggleSubscribeParams) returns (google.protobuf.Empty);
+}
+
+message GetSubscribesByUserParams {
+  int32 user_id = 1;
+}
+
+message GetSubscribesByUserResponse {
+  repeated string topics = 1;
+}
+
+message ToggleSubscribeParams {
+  int32 user_id = 1;
+  repeated string topics = 2;
+}
+
+message Message {
+  string topic = 1;
+  google.protobuf.Any payload = 2;
+}
+
+message Messages {
+  repeated Message messages = 1;
+}
+
+message PublishMessage {
+  repeated string topics = 1;
+  google.protobuf.Any payload = 2;
+}
