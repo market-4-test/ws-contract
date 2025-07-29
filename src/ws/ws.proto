@@ -12,7 +12,7 @@ service WebSocket {
 }
 
 message GetSubscribesByUserParams {
-  int32 user_id = 1;
+  string user_id = 1;
 }
 
 message GetSubscribesByUserResponse {
@@ -20,7 +20,7 @@ message GetSubscribesByUserResponse {
 }
 
 message ToggleSubscribeParams {
-  int32 user_id = 1;
+  string user_id = 1;
   repeated string topics = 2;
 }
 
